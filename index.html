@@ -1,43 +1,329 @@
+
+<!-- IS436-Lab4: Young Kim --> 
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IS436 Lab 4 Prototype - Department of Information Systems</title>
-    </head>
+    <title>Department of Information Systems - UMBC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;  }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333; }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;  }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem; }
+        .logo img { height: 50px;  }
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: bold;  }
+
+        /* Navigation Styles */
+        nav {
+            background: #ffc107;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav ul {
+            list-style: none;
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem; }
+        nav ul li { position: relative; }
+        nav ul li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;  }
+        nav ul li a:hover {
+            background: #ffdb4d;
+            color: #000;   }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;  }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto; }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease; }
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);}
+            to {
+                opacity: 1;
+                transform: translateY(0);} }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;  }
+
+        /* Section Styles */
+        .section {margin-bottom: 4rem; }
+        .section-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #ffc107;
+            display: inline-block; }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem; }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);   }
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem; }
+        .card p {
+            color: #666;
+            line-height: 1.8;  }
+        .card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: color 0.3s ease; }
+        .card a:hover { color: #764ba2; }
+
+        /* Opportunities Section */
+        .opportunities {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem; }
+
+        .opportunities h2 {
+            color: #333;
+            margin-bottom: 1rem; }
+        .opportunities p {
+            color: #555;
+            margin-bottom: 1rem; }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease; }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+
+        /* News Section */
+        .news-item {
+            background: white;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease; }
+        .news-item:hover {box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+        .news-item h3 {
+            color: #333;
+            margin-bottom: 0.5rem;  }
+        .news-item p {
+            color: #666;
+            line-height: 1.6; }
+        .news-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500; }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem; }
+        footer p {margin-bottom: 0.5rem;}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;}
+            nav ul {
+                flex-direction: column;
+                padding: 0;}
+            nav ul li a {border-bottom: 1px solid rgba(0,0,0,0.1);}
+            .hero h1 {font-size: 2rem;}
+            .hero p {font-size: 1rem;}
+            .card-grid {grid-template-columns: 1fr;} }
+    </style>
+</head>
 <body>
-
+    <!-- Header -->
     <header>
-        <div class="university-branding">
-            <h1>UMBC</h1> 
-            <p>College of Engineering and Information Technology</p>
+        <div class="header-content">
+            <a href="#" class="logo" style="text-decoration: none; color: white;">
+                <img src="umbc-logo.png" alt="UMBC Logo">
+                <div class="logo-text">Department of Information Systems</div>
+            </a>
         </div>
-
-        <div class="site-branding">
-            <h2>Department of Information Systems</h2>
-        </div>
-
-        <nav aria-label="Department Navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li> 
-                
-                <li><a href="undergraduate-is.html">Undergraduate Program</a></li>
-                
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        <section>
-            <h3>page</h3>
-            <p> Home .</p>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="program.html">Undergraduate Program</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to the Department of Information Systems at UMBC</h1>
+            <p>Our interdisciplinary program helps students develop in-demand skills, preparing them for careers in IT and IS. Located near technology hubs, our suburban campus is an exciting place to be for students in tech. With a variety of degree programs to choose from, we offer programs designed to give you options for applying information systems to your career.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Student Opportunities -->
+        <section class="opportunities">
+            <h2 class="section-title">Student Opportunities</h2>
+            <p>The department uses a central form to collect research interests from our undergraduate and graduate students to help match students with projects supervised by IS faculty.</p>
+            <p>Visit our Current Opportunities webpage for complete information and details about internships, research positions, and career development programs.</p>
+            <a href="#" class="btn">Explore Opportunities</a>
         </section>
-    </main>
 
+        <!-- Featured Programs -->
+        <section class="section">
+            <h2 class="section-title">Our Programs</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Undergraduate Programs</h3>
+                    <p>Develop foundational skills in information systems, business technology, and data analytics. Our programs prepare you for the rapidly evolving tech industry.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="card">
+                    <h3>Master's Programs</h3>
+                    <p>Advance your career with specialized tracks in Data Science, Cybersecurity, Human-Centered Computing, and Health Informatics. Available online and on-campus.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="card">
+                    <h3>Ph.D. Program</h3>
+                    <p>Join our research community and contribute to cutting-edge discoveries in AI, information security, and human-computer interaction.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Spotlights -->
+        <section class="section">
+            <h2 class="section-title">Student Spotlights</h2>           
+            <div class="news-item">
+                <h3>Leah Narat '24 - NASA Internship Success</h3>
+                <p>Business Technology Administration graduate Leah Narat '24 landed an elite NASA internship in business intelligence, showcasing the caliber of opportunities available to our students.</p>
+                <a href="#">Read More →</a>
+            </div>
+            <div class="news-item">
+                <h3>Leonard Traeger - Best Paper Award Winner</h3>
+                <p>Ph.D. candidate Leonard Traeger won the Best Paper Award at the International Conference on Enterprise Information Systems (ICEIS) for his research on entity resolution with self-supervised agents.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </section>
+
+        <!-- Faculty Research -->
+        <section class="section">
+            <h2 class="section-title">Faculty & Research Excellence</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Dr. Yasmine Kotturi</h3>
+                    <p>Assistant Professor selected for the inaugural CRA Trustworthy AI Research Fellowship, advancing human-centered approaches in AI development.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="card">
+                    <h3>Dr. Foad Hamidi</h3>
+                    <p>Launching new projects to expand technology-rich learning opportunities for youth in Baltimore through participatory design and community engagement.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="card">
+                    <h3>Dr. Ian Stockwell</h3>
+                    <p>Received major NIH grant for healthcare efficiency research, pushing boundaries of interdisciplinary collaboration at UMBC.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alumni Success -->
+        <section class="section">
+            <h2 class="section-title">Alumni Success Stories</h2>
+            <div class="news-item">
+                <h3>Chris-Anne Correa '13, M.S. '16</h3>
+                <p>Senior User Experience Designer at Amazon Prime Video and newest Advisory Board Member. Creating exceptional customer experiences using data-driven design principles.</p>
+                <a href="#">Read Interview →</a>
+            </div>
+            <div class="news-item">
+                <h3>Devin Price '14</h3>
+                <p>Information security professional, writer, educator, and thought leader with over 9 years of experience in the tech industry, emphasizing the importance of continuous learning.</p>
+                <a href="#">Read Interview →</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Department of Information Systems – UMBC</p>
+        <p>&copy; 2025 University of Maryland, Baltimore County</p>
+        <p>Department of Information Systems</p>
+        <p>1000 Hilltop Circle, Baltimore, MD 21250</p>
     </footer>
-
 </body>
 </html>

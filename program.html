@@ -1,0 +1,418 @@
+<!-- IS436-Lab4: Young Kim --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undergraduate Program - Department of Information Systems - UMBC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333; }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: white; }
+        .logo img { height: 50px;  }
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: bold; }
+
+        /* Navigation Styles */
+        nav {
+            background: #ffc107;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav ul {
+            list-style: none;
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem; }
+        nav ul li { position: relative; }
+        nav ul li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease; }
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #ffdb4d;
+            color: #000; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;  }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto; }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease; }
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px); }
+            to {
+                opacity: 1;
+                transform: translateY(0); } }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem; }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 4rem; }
+        .section-title {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #ffc107;
+            display: inline-block; }
+
+        /* Program Overview */
+        .program-overview {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem; }
+        .program-overview h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2rem; }
+        .program-overview p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem; }
+
+        /* Career Paths Box */
+        .career-paths {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-top: 2rem; }
+        .career-paths h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem; }
+        .career-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem; }
+        .career-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea; }
+        .career-item h4 {
+            color: #333;
+            font-size: 1.1rem; }
+
+        /* Course Requirements */
+        .requirements {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;  }
+        .requirements h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem; }
+        .course-category { margin-bottom: 2rem; }
+        .course-category h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            padding-left: 1rem;
+            border-left: 4px solid #ffc107;}
+        .course-list {
+            list-style: none;
+            padding-left: 1rem; }
+        .course-list li {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            transition: all 0.3s ease;  }
+        .course-list li:hover {
+            background: #e9ecef;
+            transform: translateX(5px);  }
+        .course-code {
+            color: #667eea;
+            font-weight: 600; }
+
+        /* Important Notes Box */
+        .important-notes {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
+            border-left: 5px solid #ffc107;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem; }
+        .important-notes h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+            font-size: 1.5rem; }
+        .important-notes ul {
+            list-style: none;
+            padding-left: 0; }
+        .important-notes li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #856404; }
+        .important-notes li:before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem; }
+
+        /* Gateway Requirements Box */
+        .gateway-box {
+            background: linear-gradient(135deg, #d4edda 0%, #e8f5e9 100%);
+            border-left: 5px solid #28a745;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem; }
+        .gateway-box h3 {
+            color: #155724;
+            margin-bottom: 1rem;
+            font-size: 1.5rem; }
+        .gateway-box p {
+            color: #155724;
+            margin-bottom: 1rem; }
+        .gateway-box ul {
+            list-style: none;
+            padding-left: 0; }
+        .gateway-box li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #155724; }
+        .gateway-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #28a745; }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem; }
+        footer p {margin-bottom: 0.5rem; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;  }
+            nav ul {
+                flex-direction: column;
+                padding: 0; }
+            nav ul li a {
+                border-bottom: 1px solid rgba(0,0,0,0.1); }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem;  }
+            .career-list { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="umbc-logo.png" alt="UMBC Logo">
+                <div class="logo-text">Department of Information Systems</div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="program.html" class="active">Undergraduate Program</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bachelor of Science in Information Systems</h1>
+            <p>Gain an in-depth technical and conceptual understanding of the IS field. Learn to design, build, and manage computer systems while developing essential programming, database management, and web design skills.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Program Overview -->
+        <section class="program-overview">
+            <h2>Program Overview</h2>
+            <p>The B.S. in Information Systems is for students who want an in-depth technical and conceptual understanding of the IS field. You will leave UMBC with technical skills like programming, database management, and web design, as well as the business skills required to help you excel in your career.</p>
+            <p>Our program prepares students for all potential career positions in the information systems field. Learn how to design, build, and manage the computer systems that we depend on in our everyday lives.</p>
+            <p>For successful completion of the degree, all students must satisfy the general education requirements that are explained in the UMBC Undergraduate Catalog.</p>
+            
+            <div class="career-paths">
+                <h3>Career Opportunities Include:</h3>
+                <div class="career-list">
+                    <div class="career-item">
+                        <h4>Systems Analysis and Design</h4>
+                    </div>
+                    <div class="career-item">
+                        <h4>Computer Networking</h4>
+                    </div>
+                    <div class="career-item">
+                        <h4>Health Care Informatics</h4>
+                    </div>
+                    <div class="career-item">
+                        <h4>Database Administration</h4>
+                    </div>
+                    <div class="career-item">
+                        <h4>Information Systems Manager</h4>
+                    </div>
+                    <div class="career-item">
+                        <h4>Business Systems Analyst</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gateway Requirements -->
+        <section class="section">
+            <div class="gateway-box">
+                <h3>Gateway Requirements</h3>
+                <p>Before being allowed to take IS 410 and 450 (and then the rest of the IS 400-level core courses), students must first complete the following gateway requirements:</p>
+                <p><strong>A grade of "C" or higher in:</strong></p>
+                <ul>
+                    <li>MATH 155 – Elementary Calculus</li>
+                    <li>IS 147 – Introduction to Computer Programming</li>
+                </ul>
+                <p><strong>And a grade of "B" or higher in:</strong></p>
+                <ul>
+                    <li>IS 300 – Management Information Systems</li>
+                    <li>IS 310 – Software and Hardware Concepts</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Required Courses -->
+        <section class="section">
+            <h2 class="section-title">Required Courses</h2>
+            
+            <div class="requirements">               
+                
+                <div class="course-category">
+                    <h4>Information Systems Core</h4>
+                    <ul class="course-list">
+                        <li><span class="course-code">IS 300</span> – Management Information Systems</li>
+                        <li><span class="course-code">IS 310</span> – Software and Hardware Concepts</li>
+                        <li><span class="course-code">IS 410</span> – Introduction to Database Design</li>
+                        <li><span class="course-code">IS 420</span> – Database Application Development</li>
+                        <li><span class="course-code">IS 425</span> – Decision Support Systems</li>
+                        <li><span class="course-code">IS 436</span> – Structured Systems Analysis & Design</li>
+                        <li><span class="course-code">IS 450</span> – Data Communications and Networks</li>
+                        <li><span class="course-code">IS 451</span> – Network Design and Management</li>
+                        <li><span class="course-code">IS 3xx or 4xx</span> – Upper Level IS Elective</li>
+                    </ul>
+                </div>
+
+                <div class="course-category">
+                    <h4>Mathematics and Computer Science</h4>
+                    <ul class="course-list">
+                        <li><span class="course-code">MATH 155</span> – Applied Calculus</li>
+                        <li><span class="course-code">MATH 215</span> – Finite Mathematics for Information Sciences</li>
+                        <li><span class="course-code">STAT 351</span> – Applied Statistics for Business and Economics</li>
+                        <li><span class="course-code">IS 147</span> – Introduction to Computer Programming or <span class="course-code">CMSC 201</span> – Computer Science I for Majors</li>
+                        <li><span class="course-code">IS 247</span> – Computer Programming II or <span class="course-code">CMSC 202</span> – Computer Science II for Major</li>
+                        <li>One additional approved programming course: IS 246, IS 413, IS 448, IS 471, or IS 472</li>
+                    </ul>
+                </div>
+
+                <div class="course-category">
+                    <h4>Administrative Science</h4>
+                    <ul class="course-list">
+                        <li><span class="course-code">MGMT 210</span> – The Practice of Management</li>
+                        <li><span class="course-code">ECON 101</span> – Principles of Microeconomics (SS)</li>
+                        <li><span class="course-code">ECON 102</span> – Principles of Macroeconomics (SS)</li>
+                        <li><span class="course-code">ECON 121</span> – Principles of Accounting I</li>
+                        <li><span class="course-code">ECON 122</span> – Principles of Accounting II</li>
+                        <li><span class="course-code">ENGL 393</span> – Technical Communication or <span class="course-code">IS 369</span> – Research Seminar: Writings In Information Systems</li>
+                    </ul>
+                </div>
+
+                <div class="course-category">
+                    <h4>Upper-Level Electives (Examples)</h4>
+                    <ul class="course-list">
+                        <li>IS 303, IS 304, IS 460, IS 461, IS 427, IS 428</li>
+                        <li>IS 430, IS 438, IS 464, IS 471, IS 472</li>
+                        <li>IS 451U, IS 451M, IS 452</li>
+                        <li>See catalog for a full listing of available electives</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Important Notes -->
+        <section class="section">
+            <div class="important-notes">
+                <h3>Important Program Requirements</h3>
+                <ul>
+                    <li>All Information Systems majors must complete at least 9 upper level IS and Management courses taught by the IS department at UMBC.</li>
+                    <li>Students must earn a grade of "C" or better for any course to be applied to the Information Systems major.</li>
+                    <li>IS 300 and IS 310 must be completed in residence and Information Systems does not support third time repeat petitions for the purposes of continuing in this major.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 University of Maryland, Baltimore County</p>
+        <p>Department of Information Systems</p>
+        <p>1000 Hilltop Circle, Baltimore, MD 21250</p>
+    </footer>
+</body>
+</html>
